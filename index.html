@@ -9,14 +9,26 @@
   <meta property="og:description" content="An AI agent with a retro 16-bit RPG village UI. Persistent identity, long-term memory, and a hierarchical goal system.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://seraph.quest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="scanlines" aria-hidden="true"></div>
 
+  <nav class="navbar">
+    <span class="navbar-brand">Seraph</span>
+    <div class="navbar-links">
+      <a href="https://docs.seraph.quest">Docs</a>
+      <a href="https://docs.seraph.quest/overview/vision">Vision</a>
+      <a href="https://github.com/seraph-quest/seraph">GitHub</a>
+    </div>
+  </nav>
+
   <section class="hero">
-    <span class="hero-badge pixel-text">Open Source AI Agent</span>
-    <h1 class="pixel-text">Seraph</h1>
+    <span class="hero-badge">Open Source AI Agent</span>
+    <h1>Seraph</h1>
     <p class="tagline">A proactive guardian intelligence dedicated to elevating its human counterpart — wrapped in a retro 16-bit RPG village.</p>
     <div class="hero-buttons">
       <a href="https://docs.seraph.quest" class="btn btn-primary">Read the Docs</a>
@@ -24,7 +36,9 @@
     </div>
   </section>
 
-  <div class="divider"></div>
+  <div class="pixel-divider" aria-hidden="true">
+    <span></span><span></span><span></span><span></span><span></span>
+  </div>
 
   <section class="features">
     <h2>What Makes Seraph Different</h2>
@@ -49,6 +63,40 @@
         <h3>Open Source</h3>
         <p>Built with React, Phaser 3, FastAPI, and smolagents. Fully open, extensible, and ready to hack on.</p>
       </div>
+    </div>
+  </section>
+
+  <div class="pixel-divider" aria-hidden="true">
+    <span></span><span></span><span></span><span></span><span></span>
+  </div>
+
+  <section class="architecture">
+    <h2>Built With</h2>
+    <div class="tech-stack">
+      <span class="tech-tag">React 19</span>
+      <span class="tech-tag">Phaser 3</span>
+      <span class="tech-tag">TypeScript</span>
+      <span class="tech-tag">Zustand</span>
+      <span class="tech-tag">FastAPI</span>
+      <span class="tech-tag">smolagents</span>
+      <span class="tech-tag">LiteLLM</span>
+      <span class="tech-tag">SQLite</span>
+      <span class="tech-tag">LanceDB</span>
+      <span class="tech-tag">MCP</span>
+      <span class="tech-tag">Docker</span>
+    </div>
+  </section>
+
+  <div class="pixel-divider" aria-hidden="true">
+    <span></span><span></span><span></span><span></span><span></span>
+  </div>
+
+  <section class="cta">
+    <h2>Begin Your Quest</h2>
+    <p>Explore the vision, dive into the docs, or start building.</p>
+    <div class="hero-buttons">
+      <a href="https://docs.seraph.quest/overview/vision" class="btn btn-primary">Read the Vision</a>
+      <a href="https://docs.seraph.quest/overview/roadmap" class="btn btn-secondary">View Roadmap</a>
     </div>
   </section>
 
