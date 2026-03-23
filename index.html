@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Seraph | The Workspace-First Guardian Cockpit</title>
+  <title>Seraph | The Guardian Workspace For Long-Running Work</title>
   <meta
     name="description"
-    content="Seraph is an open-source guardian cockpit with persistent memory, proactive scheduling, screen awareness, hierarchical goals, and real-world execution through tools and MCP servers."
+    content="Seraph is an open-source guardian workspace for long-running work, combining persistent memory, proactive scheduling, screen awareness, hierarchical goals, and real execution."
   >
-  <meta property="og:title" content="Seraph | The Workspace-First Guardian Cockpit">
+  <meta property="og:title" content="Seraph | The Guardian Workspace For Long-Running Work">
   <meta
     property="og:description"
-    content="A workspace-first guardian system for power users who need memory, visibility, real execution, and explicit control in one operator surface."
+    content="A workspace-first guardian system for people who want memory, visibility, and explicit human control while real work is in motion."
   >
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://seraph.quest">
@@ -19,32 +19,35 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=Space+Grotesk:wght@500;700&amp;display=swap"
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;700&amp;display=swap"
     rel="stylesheet"
   >
   <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
-  <div class="page-shell">
-    <div class="ambient-grid" aria-hidden="true"></div>
-    <div class="ambient-orb ambient-orb--left" aria-hidden="true"></div>
-    <div class="ambient-orb ambient-orb--right" aria-hidden="true"></div>
-    <div class="scanline-overlay" aria-hidden="true"></div>
+  <div class="scene-shell" aria-hidden="true">
+    <canvas id="scene-webgl" class="scene-webgl"></canvas>
+    <div class="scene-gradient"></div>
+    <div class="scene-noise"></div>
+    <div class="scene-vignette"></div>
+  </div>
 
+  <div class="page-shell">
     <header class="site-header">
       <div class="container header-inner">
         <a href="#top" class="brand">
           <span class="brand-mark">S</span>
           <span class="brand-text">
             <strong>Seraph</strong>
-            <span>Guardian cockpit</span>
+            <span>Guardian workspace</span>
           </span>
         </a>
 
         <nav class="site-nav" aria-label="Primary">
           <a href="#approach">Approach</a>
-          <a href="#loop">Guardian Loop</a>
           <a href="#surface">Surface</a>
+          <a href="#loop">Guardian Loop</a>
           <a href="https://docs.seraph.quest">Docs</a>
           <a href="https://github.com/seraph-quest/seraph">GitHub</a>
         </nav>
@@ -52,282 +55,223 @@
     </header>
 
     <main>
-      <section class="hero container" id="top">
-        <div class="hero-copy">
-          <p class="eyebrow">Open-source guardian system</p>
-          <h1>The workspace-first cockpit for AI that has to stay useful under load.</h1>
-          <p class="hero-lede">
-            Seraph brings persistent memory, proactive scheduling, screen awareness, hierarchical goals,
-            and explicit operator control into one dense workspace. It is built for people who need
-            visibility, not a themed chat wrapper.
-          </p>
+      <section class="hero section" id="top">
+        <div class="container hero-layout">
+          <div class="hero-copy" data-reveal>
+            <p class="eyebrow">Open-source guardian system</p>
+            <h1>The guardian workspace for work that does not fit in one chat.</h1>
+            <p class="hero-copy-text">
+              Seraph keeps memory, timing, and execution attached to the same workspace, so the agent can
+              remember context, follow through with tools, and stay legible while work is happening.
+            </p>
 
-          <div class="hero-actions">
-            <a href="https://docs.seraph.quest" class="btn btn-primary">Read the Docs</a>
-            <a href="https://github.com/seraph-quest/seraph" class="btn btn-secondary">View on GitHub</a>
-            <a href="https://docs.seraph.quest/overview/roadmap" class="text-link">Roadmap</a>
-          </div>
+            <div class="hero-actions">
+              <a href="https://docs.seraph.quest" class="btn btn-primary">Read the Docs</a>
+              <a href="https://github.com/seraph-quest/seraph" class="btn btn-secondary">View on GitHub</a>
+              <a href="https://docs.seraph.quest/" class="text-link">Roadmap</a>
+            </div>
 
-          <ul class="hero-signals" role="list">
-            <li class="signal-tile">
+            <div class="hero-proofline">
               <span>Persistent memory</span>
-              <strong>Context compounds over time</strong>
-            </li>
-            <li class="signal-tile">
-              <span>Operator visibility</span>
-              <strong>Trace, queues, approvals, state</strong>
-            </li>
-            <li class="signal-tile">
-              <span>Real execution</span>
-              <strong>Tools, workflows, MCP servers</strong>
-            </li>
-            <li class="signal-tile">
-              <span>Proactive timing</span>
-              <strong>Scheduling and intervention loops</strong>
-            </li>
-          </ul>
-        </div>
-
-        <div class="hero-stage">
-          <div class="signal-card signal-card--north">
-            <span class="signal-card__label">Human state</span>
-            <strong>Focus block active</strong>
-            <p>Attention budget is low. Suggestions stay ranked.</p>
-          </div>
-
-          <div class="cockpit-preview panel-shell">
-            <div class="preview-topbar">
-              <div>
-                <p class="preview-window-id">SERAPH / ACTIVE WORKSPACE</p>
-                <p class="preview-window-note">Dense operator desk with live state, commands, and audit.</p>
-              </div>
-              <div class="preview-status-group">
-                <span class="status-pill">runtime primary</span>
-                <span class="status-pill status-pill--strong">policy review</span>
-              </div>
-            </div>
-
-            <div class="preview-grid">
-              <section class="preview-panel panel-shell">
-                <p class="panel-label">Guardian state</p>
-                <div class="state-stack">
-                  <div class="state-row">
-                    <span>Attention</span>
-                    <strong>guarded</strong>
-                  </div>
-                  <div class="state-row">
-                    <span>Intervention mode</span>
-                    <strong>mixed initiative</strong>
-                  </div>
-                  <div class="state-row">
-                    <span>Queue</span>
-                    <strong>02 urgent</strong>
-                  </div>
-                </div>
-              </section>
-
-              <section class="preview-panel panel-shell">
-                <p class="panel-label">Thread</p>
-                <div class="preview-thread">
-                  <div class="thread-entry thread-entry--operator">
-                    <span class="thread-role">Operator</span>
-                    <p>Compare roadmap drift against latest workstreams and flag anything blocked.</p>
-                  </div>
-                  <div class="thread-entry thread-entry--guardian">
-                    <span class="thread-role">Seraph</span>
-                    <p>Loaded status, activity ledger, and workflow history. Two interventions need approval.</p>
-                  </div>
-                </div>
-              </section>
-
-              <section class="preview-panel panel-shell">
-                <p class="panel-label">Live queue</p>
-                <ul class="preview-list" role="list">
-                  <li>
-                    <span class="preview-tag preview-tag--warning">approval</span>
-                    <strong>Send planning follow-up</strong>
-                  </li>
-                  <li>
-                    <span class="preview-tag preview-tag--accent">workflow</span>
-                    <strong>Weekly review draft ready</strong>
-                  </li>
-                  <li>
-                    <span class="preview-tag preview-tag--success">mcp</span>
-                    <strong>Things3 sync healthy</strong>
-                  </li>
-                </ul>
-              </section>
-
-              <section class="preview-panel panel-shell">
-                <p class="panel-label">Audit trace</p>
-                <ul class="audit-list" role="list">
-                  <li><span>09:41</span><strong>strategist ranked intervention</strong></li>
-                  <li><span>09:43</span><strong>browser session continuity restored</strong></li>
-                  <li><span>09:45</span><strong>runtime fallback remained visible</strong></li>
-                </ul>
-              </section>
-            </div>
-
-            <div class="preview-commandbar">
-              <span class="command-prompt">/</span>
-              <span class="command-text">review weekly drift --include approvals --open ledger</span>
-              <span class="command-key">enter</span>
+              <span>Proactive scheduling</span>
+              <span>Screen awareness</span>
+              <span>Goals, workflows, and MCP</span>
             </div>
           </div>
 
-          <div class="signal-card signal-card--south">
-            <span class="signal-card__label">Urgent queue</span>
-            <strong>2 operator decisions pending</strong>
-            <p>Failure states stay legible instead of disappearing behind the scene.</p>
+          <div class="hero-visual" data-reveal>
+            <div class="prism-card panel-surface">
+              <p class="panel-kicker">Guardian workspace</p>
+              <h2>Remember. Watch. Act.</h2>
+              <p>
+                Seraph is built for people who want an agent that can keep the thread of real work alive,
+                not just produce the next answer.
+              </p>
+            </div>
+
+            <article class="floating-panel floating-panel--memory panel-surface">
+              <span>Memory</span>
+              <strong>Long-term context stays live instead of resetting every session.</strong>
+            </article>
+
+            <article class="floating-panel floating-panel--timing panel-surface">
+              <span>Timing</span>
+              <strong>Briefings, reviews, and ranked interventions stay tied to the same system.</strong>
+            </article>
+
+            <article class="floating-panel floating-panel--control panel-surface">
+              <span>Control</span>
+              <strong>Approvals, fallback paths, and recent activity remain visible while work is moving.</strong>
+            </article>
           </div>
         </div>
       </section>
 
-      <section class="section container" id="approach">
-        <div class="section-head">
-          <p class="section-kicker">Product stance</p>
-          <h2>Built for guardian work, not passive demos.</h2>
+      <section class="section" id="approach">
+        <div class="container section-intro" data-reveal>
+          <p class="eyebrow">Why Seraph</p>
+          <h2>Most agent products sell intelligence. Seraph sells continuity.</h2>
           <p>
-            The landing page now matches the current product direction: Seraph is a dense operator surface
-            for memory, intervention, execution, and control.
+            The product is designed to keep memory, attention, execution, and human steering in the same
+            loop so useful work can continue after the first answer.
           </p>
         </div>
 
-        <div class="principles-grid">
-          <article class="principle-card panel-shell">
-            <p class="card-kicker">01</p>
-            <h3>Dense by default</h3>
+        <div class="container thesis-grid">
+          <article class="thesis-card thesis-card--lead panel-surface" data-reveal>
+            <p class="card-kicker">Keep the thread</p>
+            <h3>Seraph is built for long-running work, not isolated prompts.</h3>
             <p>
-              Sessions, approvals, workflows, artifacts, and live trace belong in the same working surface,
-              not behind a decorative shell.
+              Plans, recent activity, queued decisions, and working context stay close enough to resume from
+              instead of forcing the user to reconstruct state each time.
             </p>
           </article>
 
-          <article class="principle-card panel-shell">
-            <p class="card-kicker">02</p>
-            <h3>Evidence near action</h3>
+          <article class="thesis-card panel-surface" data-reveal>
+            <p class="card-kicker">Show the work</p>
+            <h3>Important execution stays readable while it is still happening.</h3>
             <p>
-              Important claims need provenance, routing context, and visible degraded-state signals close to
-              the decision point.
+              The system does not bury approvals, degradation, or active work behind theatrical presentation.
             </p>
           </article>
 
-          <article class="principle-card panel-shell">
-            <p class="card-kicker">03</p>
-            <h3>Human override stays explicit</h3>
+          <article class="thesis-card panel-surface" data-reveal>
+            <p class="card-kicker">Follow through</p>
+            <h3>Tools, workflows, and integrations stay attached to the same working surface.</h3>
             <p>
-              Seraph can act proactively, but approval, interruption, and redirection remain first-class
-              operator controls.
+              Reasoning and action remain part of one product loop instead of separate disconnected modes.
             </p>
           </article>
         </div>
       </section>
 
-      <section class="section container" id="loop">
-        <div class="section-head">
-          <p class="section-kicker">Guardian loop</p>
-          <h2>One system, five reinforcing loops.</h2>
-          <p>
-            Seraph is not just a model wrapper. The product only works when observation, memory, judgment,
-            action, and feedback compound together.
-          </p>
-        </div>
+      <section class="section surface-section" id="surface">
+        <div class="container surface-layout">
+          <div class="surface-copy" data-reveal>
+            <p class="eyebrow">What stays visible</p>
+            <h2>A workspace where the important layers stay on-screen.</h2>
+            <p>
+              Sessions, memory, active work, approvals, workflow runs, and recent execution belong to the
+              same environment so the human can steer without losing situational awareness.
+            </p>
+          </div>
 
-        <div class="loop-grid">
-          <article class="loop-card panel-shell">
-            <span class="loop-step">01</span>
-            <h3>Observe</h3>
-            <p>Collect signals from sessions, schedules, screen context, operator commands, and queued work.</p>
-          </article>
-
-          <article class="loop-card panel-shell">
-            <span class="loop-step">02</span>
-            <h3>Model</h3>
-            <p>Maintain a living picture of the human, their goals, current state, and ongoing commitments.</p>
-          </article>
-
-          <article class="loop-card panel-shell">
-            <span class="loop-step">03</span>
-            <h3>Reason</h3>
-            <p>Rank leverage, risk, and timing instead of treating every notification or task as equally useful.</p>
-          </article>
-
-          <article class="loop-card panel-shell">
-            <span class="loop-step">04</span>
-            <h3>Act</h3>
-            <p>Move through tools, workflows, and MCP integrations with policy-aware execution and visible control.</p>
-          </article>
-
-          <article class="loop-card panel-shell">
-            <span class="loop-step">05</span>
-            <h3>Learn</h3>
-            <p>Use intervention results, operator feedback, and long-term memory to improve future decisions.</p>
-          </article>
+          <div class="surface-board panel-surface" data-reveal>
+            <div class="board-row">
+              <span>Sessions and active work</span>
+              <p>Continue from where useful work last paused instead of starting over.</p>
+            </div>
+            <div class="board-row">
+              <span>Memory and evidence</span>
+              <p>Stored context supports the next decision instead of disappearing behind a thread boundary.</p>
+            </div>
+            <div class="board-row">
+              <span>Approvals and intervention</span>
+              <p>Human decisions stay explicit when execution crosses trust boundaries.</p>
+            </div>
+            <div class="board-row">
+              <span>Workflow runs and tool activity</span>
+              <p>The system stays inspectable while work is moving, not only after it finishes.</p>
+            </div>
+          </div>
         </div>
       </section>
 
-      <section class="section container" id="surface">
-        <div class="section-head">
-          <p class="section-kicker">Shipped foundations</p>
-          <h2>Designed as a real operator surface.</h2>
+      <section class="section capabilities-section">
+        <div class="container section-intro section-intro--compact" data-reveal>
+          <p class="eyebrow">Shipped foundations</p>
+          <h2>Built for real follow-through.</h2>
           <p>
-            The current repo direction is a power-user guardian workspace with explicit controls, linked
-            evidence, and an extensible execution plane.
+            The current product direction is a guardian workspace with longitudinal memory, real execution,
+            and explicit human steering.
           </p>
         </div>
 
-        <div class="surface-layout">
-          <article class="stack-card panel-shell">
-            <div class="stack-card__header">
-              <p class="card-kicker">In the workspace</p>
-              <h3>What the operator sees</h3>
-            </div>
-            <ul class="feature-list" role="list">
-              <li>Dense multi-pane cockpit with sessions, priorities, approvals, trace, workflows, and artifacts</li>
-              <li>Command-first operation with reusable workflows, saved layouts, and explicit continue or interrupt paths</li>
-              <li>Activity ledger and runtime visibility so operator state does not collapse into a single chat thread</li>
-              <li>Policy-aware controls that keep execution, failure, and degraded mode legible under load</li>
-            </ul>
+        <div class="container capability-grid">
+          <article class="capability-card panel-surface" data-reveal>
+            <p class="card-kicker">Memory</p>
+            <h3>Persistent identity, long-term memory, and hierarchical goals.</h3>
+            <p>Context compounds instead of resetting at the edge of a conversation.</p>
           </article>
 
-          <article class="stack-card panel-shell">
-            <div class="stack-card__header">
-              <p class="card-kicker">In the system</p>
-              <h3>What keeps it running</h3>
-            </div>
-            <ul class="feature-list" role="list">
-              <li>Persistent identity, long-term memory, and hierarchical goals for longitudinal continuity</li>
-              <li>Proactive scheduling across briefings, reviews, strategist ticks, and maintenance loops</li>
-              <li>Observer and screen-awareness foundations with optional OCR for richer context capture</li>
-              <li>Plug-and-play MCP integration plus local tools, workflows, and open-source runtime control</li>
-            </ul>
+          <article class="capability-card panel-surface" data-reveal>
+            <p class="card-kicker">Timing</p>
+            <h3>Proactive scheduling for briefings, reviews, strategist ticks, and maintenance loops.</h3>
+            <p>Interventions can be ranked around timing, not only availability.</p>
+          </article>
+
+          <article class="capability-card panel-surface" data-reveal>
+            <p class="card-kicker">Execution</p>
+            <h3>Tools, workflows, and plug-and-play MCP servers in one working system.</h3>
+            <p>Real-world actions stay attached to the workspace where they were initiated.</p>
+          </article>
+
+          <article class="capability-card panel-surface" data-reveal>
+            <p class="card-kicker">Oversight</p>
+            <h3>Approvals, activity, and degraded-state visibility keep human control explicit.</h3>
+            <p>Legibility remains part of the product instead of a hidden debug layer.</p>
           </article>
         </div>
 
-        <div class="build-strip">
+        <div class="container build-strip" data-reveal>
           <span>React 19</span>
-          <span>TypeScript</span>
           <span>FastAPI</span>
           <span>SQLite + LanceDB</span>
           <span>APScheduler</span>
           <span>MCP</span>
-          <span>Docker</span>
           <span>Open source</span>
         </div>
       </section>
 
-      <section class="section container">
-        <div class="cta-panel panel-shell">
-          <div class="cta-copy">
-            <p class="section-kicker">Current direction</p>
-            <h2>Seraph is being built for power users who want legible execution, not theatrical automation.</h2>
-            <p>
-              Explore the docs, inspect the code, and follow the guardian cockpit roadmap as the product
-              deepens memory, presence, and intervention quality.
-            </p>
-          </div>
+      <section class="section" id="loop">
+        <div class="container section-intro section-intro--compact" data-reveal>
+          <p class="eyebrow">Guardian loop</p>
+          <h2>Observe. Model. Reason. Act. Learn.</h2>
+          <p>
+            The product only works when those loops reinforce each other instead of collapsing back into
+            one-off chat.
+          </p>
+        </div>
 
-          <div class="cta-actions">
+        <div class="container loop-grid">
+          <article class="loop-card panel-surface" data-reveal>
+            <span>01</span>
+            <strong>Observe</strong>
+            <p>Read current work, schedules, screen context, and recent activity.</p>
+          </article>
+          <article class="loop-card panel-surface" data-reveal>
+            <span>02</span>
+            <strong>Model</strong>
+            <p>Maintain a living picture of the human, their priorities, and commitments.</p>
+          </article>
+          <article class="loop-card panel-surface" data-reveal>
+            <span>03</span>
+            <strong>Reason</strong>
+            <p>Rank leverage, risk, and timing instead of treating every task as equal.</p>
+          </article>
+          <article class="loop-card panel-surface" data-reveal>
+            <span>04</span>
+            <strong>Act</strong>
+            <p>Move through tools, workflows, and integrations with visible control.</p>
+          </article>
+          <article class="loop-card panel-surface" data-reveal>
+            <span>05</span>
+            <strong>Learn</strong>
+            <p>Use outcomes and feedback to improve the next intervention.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container cta-shell panel-surface" data-reveal>
+          <p class="eyebrow">Current direction</p>
+          <h2>A guardian workspace for people who want memory, execution, and visible control.</h2>
+          <p>
+            Explore the docs, inspect the code, and follow the roadmap as Seraph deepens memory,
+            presence, and intervention quality.
+          </p>
+
+          <div class="hero-actions">
             <a href="https://docs.seraph.quest" class="btn btn-primary">Open Documentation</a>
             <a href="https://github.com/seraph-quest/seraph" class="btn btn-secondary">Inspect the Repo</a>
           </div>
@@ -339,13 +283,13 @@
       <div class="container footer-inner">
         <div>
           <p class="footer-title">Seraph</p>
-          <p class="footer-copy">Workspace-first guardian cockpit for memory, execution, and intervention.</p>
+          <p class="footer-copy">Workspace-first guardian system for memory, execution, and intervention.</p>
         </div>
 
         <nav class="footer-links" aria-label="Footer">
-          <a href="https://docs.seraph.quest">Docs</a>
-          <a href="https://docs.seraph.quest/overview/vision">Vision</a>
-          <a href="https://docs.seraph.quest/overview/roadmap">Roadmap</a>
+          <a href="https://docs.seraph.quest/">Docs</a>
+          <a href="https://docs.seraph.quest/research">Research</a>
+          <a href="https://docs.seraph.quest/">Roadmap</a>
           <a href="https://github.com/seraph-quest/seraph">GitHub</a>
         </nav>
       </div>
