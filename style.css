@@ -285,18 +285,18 @@ section[id] {
 
 .hero-layout {
   display: grid;
-  grid-template-columns: minmax(0, 0.96fr) minmax(34rem, 1.04fr);
-  gap: clamp(2rem, 4vw, 3.5rem);
+  grid-template-columns: minmax(0, 1.06fr) minmax(31.5rem, 0.94fr);
+  gap: clamp(2rem, 3.3vw, 3rem);
   align-items: center;
 }
 
 .hero-copy {
-  max-width: 37rem;
+  max-width: 39rem;
 }
 
 .hero h1 {
   margin-top: 1rem;
-  max-width: 11.8ch;
+  max-width: 12.2ch;
   color: var(--text-strong);
   font-family: "Space Grotesk", sans-serif;
   font-size: clamp(3.15rem, 5.6vw, 5.5rem);
@@ -307,7 +307,7 @@ section[id] {
 
 .hero-copy-text {
   margin-top: 1.4rem;
-  max-width: 31rem;
+  max-width: 33rem;
   color: var(--text-dim);
   font-size: clamp(1.08rem, 1.65vw, 1.24rem);
   line-height: 1.7;
@@ -399,6 +399,9 @@ section[id] {
 }
 
 .hero-visual {
+  width: 100%;
+  max-width: 37.25rem;
+  justify-self: end;
   padding: 1rem;
   background:
     radial-gradient(circle at top right, rgba(141, 226, 255, 0.14), transparent 26%),
@@ -454,7 +457,7 @@ section[id] {
 
 .hero-surface-grid {
   display: grid;
-  grid-template-columns: minmax(18rem, 1.28fr) minmax(15rem, 0.92fr);
+  grid-template-columns: minmax(17.6rem, 1.14fr) minmax(14.4rem, 0.96fr);
   grid-template-areas:
     "primary memory"
     "primary timing"
@@ -475,10 +478,16 @@ section[id] {
 .hero-module--primary {
   grid-area: primary;
   align-content: start;
-  padding: 1.5rem;
+  padding: 1.55rem 1.8rem 1.6rem;
   background:
     radial-gradient(circle at top right, rgba(141, 226, 255, 0.12), transparent 32%),
     linear-gradient(180deg, rgba(10, 24, 37, 0.88), rgba(7, 18, 28, 0.94));
+}
+
+.hero-primary-copy {
+  display: grid;
+  gap: 0.8rem;
+  max-width: 12.6rem;
 }
 
 .hero-module--wide {
@@ -506,6 +515,16 @@ section[id] {
   color: var(--text-dim);
   font-size: 1rem;
   line-height: 1.68;
+}
+
+.hero-primary-copy h2 {
+  max-width: 4.9ch;
+  font-size: clamp(1.82rem, 2.8vw, 2.48rem);
+  text-wrap: balance;
+}
+
+.hero-primary-copy p:not(.card-kicker) {
+  max-width: 13.1rem;
 }
 
 .hero-module strong {
