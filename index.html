@@ -79,30 +79,54 @@
             </div>
           </div>
 
-          <div class="hero-visual" data-reveal>
-            <div class="prism-card panel-surface">
-              <p class="panel-kicker">Guardian workspace</p>
-              <h2>Remember. Watch. Act.</h2>
-              <p>
-                Seraph is built for people who want an agent that can keep the thread of real work alive,
-                not just produce the next answer.
-              </p>
+          <div class="hero-visual panel-surface" data-reveal>
+            <div class="hero-surface-head">
+              <span class="flag">Live workspace</span>
+              <div class="hero-surface-flags">
+                <span class="flag">Memory active</span>
+                <span class="flag flag--accent">Human approval on</span>
+              </div>
             </div>
 
-            <article class="floating-panel floating-panel--memory panel-surface">
-              <span>Memory</span>
-              <strong>Long-term context stays live instead of resetting every session.</strong>
-            </article>
+            <div class="hero-surface-grid">
+              <article class="hero-module hero-module--primary">
+                <p class="card-kicker">Context stack</p>
+                <h2>Remember. Watch. Act.</h2>
+                <p>
+                  Seraph keeps plans, recent decisions, and active runs close enough to resume useful work
+                  instead of restarting from prompt zero.
+                </p>
 
-            <article class="floating-panel floating-panel--timing panel-surface">
-              <span>Timing</span>
-              <strong>Briefings, reviews, and ranked interventions stay tied to the same system.</strong>
-            </article>
+                <ul class="hero-bullets">
+                  <li>Persistent memory tied to the same workspace</li>
+                  <li>Timing, reviews, and briefs ranked against live context</li>
+                  <li>Human approvals stay visible when execution matters</li>
+                </ul>
+              </article>
 
-            <article class="floating-panel floating-panel--control panel-surface">
-              <span>Control</span>
-              <strong>Approvals, fallback paths, and recent activity remain visible while work is moving.</strong>
-            </article>
+              <article class="hero-module">
+                <p class="card-kicker">Live memory</p>
+                <strong>Long-term context stays live instead of resetting every session.</strong>
+                <p>Goals, plans, notes, and recent activity stay available for the next decision.</p>
+              </article>
+
+              <article class="hero-module">
+                <p class="card-kicker">Intervention queue</p>
+                <strong>Briefings, reviews, and ranked interventions stay attached to the same system.</strong>
+                <p>Timing and execution remain legible while work is moving.</p>
+              </article>
+
+              <article class="hero-module hero-module--wide">
+                <p class="card-kicker">Control layer</p>
+                <strong>Approvals, fallback paths, and active runs remain inspectable.</strong>
+
+                <div class="hero-log">
+                  <span>09:41 strategist ranked intervention</span>
+                  <span>09:43 review paused until approval</span>
+                  <span>09:45 workflow resumed after confirmation</span>
+                </div>
+              </article>
+            </div>
           </div>
         </div>
       </section>
@@ -118,7 +142,7 @@
         </div>
 
         <div class="container thesis-grid">
-          <article class="thesis-card thesis-card--lead panel-surface" data-reveal>
+          <article class="thesis-card panel-surface" data-reveal>
             <p class="card-kicker">Keep the thread</p>
             <h3>Seraph is built for long-running work, not isolated prompts.</h3>
             <p>
@@ -178,12 +202,10 @@
       </section>
 
       <section class="section capabilities-section">
-        <div class="container section-intro section-intro--compact" data-reveal>
+        <div class="container capabilities-heading" data-reveal>
           <p class="eyebrow">Shipped foundations</p>
-          <h2>Built for real follow-through.</h2>
-          <p>
-            The current product direction is a guardian workspace with longitudinal memory, real execution,
-            and explicit human steering.
+          <p class="capabilities-bridge">
+            Longitudinal memory, real execution, and explicit human steering in one working system.
           </p>
         </div>
 
@@ -262,18 +284,24 @@
         </div>
       </section>
 
-      <section class="section">
+      <section class="section cta-section">
         <div class="container cta-shell panel-surface" data-reveal>
-          <p class="eyebrow">Current direction</p>
-          <h2>A guardian workspace for people who want memory, execution, and visible control.</h2>
-          <p>
-            Explore the docs, inspect the code, and follow the roadmap as Seraph deepens memory,
-            presence, and intervention quality.
-          </p>
+          <div class="cta-copy-block">
+            <p class="eyebrow">Current direction</p>
+            <h2>A guardian workspace with memory, execution, and visible control.</h2>
+            <p>
+              Explore the docs, inspect the code, and follow the roadmap as Seraph deepens memory,
+              presence, and intervention quality.
+            </p>
+          </div>
 
-          <div class="hero-actions">
-            <a href="https://docs.seraph.quest" class="btn btn-primary">Open Documentation</a>
-            <a href="https://github.com/seraph-quest/seraph" class="btn btn-secondary">Inspect the Repo</a>
+          <div class="cta-actions-block">
+            <div class="hero-actions cta-actions">
+              <a href="https://docs.seraph.quest" class="btn btn-primary">Open Documentation</a>
+              <a href="https://github.com/seraph-quest/seraph" class="btn btn-secondary">Inspect the Repo</a>
+            </div>
+
+            <p class="cta-meta">Docs, research, roadmap, and source stay one click away.</p>
           </div>
         </div>
       </section>
