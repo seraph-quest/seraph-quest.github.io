@@ -3,327 +3,173 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Seraph | The Guardian Workspace For Long-Running Work</title>
+  <title>Seraph - Guardian Workspace</title>
   <meta
     name="description"
-    content="Seraph is an open-source guardian workspace for long-running work, combining persistent memory, proactive scheduling, screen awareness, hierarchical goals, and real execution."
+    content="Seraph is an open-source guardian workspace for agents that need memory, execution, and human control."
   >
-  <meta property="og:title" content="Seraph | The Guardian Workspace For Long-Running Work">
-  <meta
-    property="og:description"
-    content="A workspace-first guardian system for people who want memory, visibility, and explicit human control while real work is in motion."
-  >
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://seraph.quest">
-  <meta name="theme-color" content="#071019">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;700&amp;display=swap"
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=Instrument+Serif:ital@0;1&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap"
     rel="stylesheet"
   >
   <link rel="stylesheet" href="style.css">
-  <script src="script.js" defer></script>
 </head>
 <body>
-  <div class="scene-shell" aria-hidden="true">
-    <canvas id="scene-webgl" class="scene-webgl"></canvas>
-    <div class="scene-gradient"></div>
-    <div class="scene-noise"></div>
-    <div class="scene-vignette"></div>
-  </div>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Seraph home">
+      <span class="brand-mark">S</span>
+      <span>
+        <strong>Seraph</strong>
+        <small>Guardian workspace</small>
+      </span>
+    </a>
+    <nav aria-label="Primary navigation">
+      <a href="#quickstart">Quick Start</a>
+      <a href="#does">What it does</a>
+      <a href="#proof">Proof</a>
+      <a href="https://docs.seraph.quest">Docs</a>
+      <a href="https://github.com/seraph-quest/seraph">GitHub</a>
+    </nav>
+  </header>
 
-  <div class="page-shell">
-    <header class="site-header">
-      <div class="container header-inner">
-        <a href="#top" class="brand">
-          <span class="brand-mark">S</span>
-          <span class="brand-text">
-            <strong>Seraph</strong>
-            <span>Guardian workspace</span>
-          </span>
-        </a>
-
-        <nav class="site-nav" aria-label="Primary">
-          <a href="#approach">Approach</a>
-          <a href="#surface">Surface</a>
-          <a href="#loop">Guardian Loop</a>
-          <a href="https://docs.seraph.quest">Docs</a>
-          <a href="https://github.com/seraph-quest/seraph">GitHub</a>
-        </nav>
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="signal">Open-source guardian system</p>
+        <h1>The agent workspace that remembers what matters.</h1>
+        <p class="lede">
+          Seraph keeps plans, memory, tool runs, timing, and approvals in one visible loop,
+          so long-running work does not reset every time the chat gets quiet.
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href="#quickstart">Start local</a>
+          <a class="button secondary" href="https://github.com/seraph-quest/seraph">Read source</a>
+        </div>
       </div>
-    </header>
 
-    <main>
-      <section class="hero section" id="top">
-        <div class="container hero-layout">
-          <div class="hero-copy" data-reveal>
-            <p class="eyebrow">Open-source guardian system</p>
-            <h1>The guardian workspace for work that does not fit in one chat.</h1>
-            <p class="hero-copy-text">
-              Seraph keeps memory, timing, and execution attached to the same workspace, so the agent can
-              remember context, follow through with tools, and stay legible while work is happening.
-            </p>
-
-            <div class="hero-actions">
-              <a href="https://docs.seraph.quest" class="btn btn-primary">Read the Docs</a>
-              <a href="https://github.com/seraph-quest/seraph" class="btn btn-secondary">View on GitHub</a>
-              <a href="https://docs.seraph.quest/" class="text-link">Roadmap</a>
-            </div>
-
-            <div class="hero-proofline">
-              <span>Persistent memory</span>
-              <span>Proactive scheduling</span>
-              <span>Screen awareness</span>
-              <span>Goals, workflows, and MCP</span>
-            </div>
-          </div>
-
-          <div class="hero-visual panel-surface" data-reveal>
-            <div class="hero-surface-head">
-              <span class="flag">Live workspace</span>
-              <div class="hero-surface-flags">
-                <span class="flag">Memory active</span>
-                <span class="flag flag--accent">Human approval on</span>
-              </div>
-            </div>
-
-            <div class="hero-surface-grid">
-              <article class="hero-module hero-module--primary">
-                <div class="hero-primary-copy">
-                  <p class="card-kicker">Context stack</p>
-                  <h2>Remember. Watch. Act.</h2>
-                  <p>
-                    Seraph keeps plans, recent decisions, and active runs close enough to resume useful work
-                    instead of restarting from prompt zero.
-                  </p>
-                </div>
-
-                <ul class="hero-bullets">
-                  <li>Persistent memory tied to the same workspace</li>
-                  <li>Timing, reviews, and briefs ranked against live context</li>
-                  <li>Human approvals stay visible when execution matters</li>
-                </ul>
-              </article>
-
-              <article class="hero-module">
-                <p class="card-kicker">Live memory</p>
-                <strong>Long-term context stays live instead of resetting every session.</strong>
-                <p>Goals, plans, notes, and recent activity stay available for the next decision.</p>
-              </article>
-
-              <article class="hero-module">
-                <p class="card-kicker">Intervention queue</p>
-                <strong>Briefings, reviews, and ranked interventions stay attached to the same system.</strong>
-                <p>Timing and execution remain legible while work is moving.</p>
-              </article>
-
-              <article class="hero-module hero-module--wide">
-                <p class="card-kicker">Control layer</p>
-                <strong>Approvals, fallback paths, and active runs remain inspectable.</strong>
-
-                <div class="hero-log">
-                  <span>09:41 strategist ranked intervention</span>
-                  <span>09:43 review paused until approval</span>
-                  <span>09:45 workflow resumed after confirmation</span>
-                </div>
-              </article>
-            </div>
-          </div>
+      <aside class="workspace-card" aria-label="Seraph live workspace preview">
+        <div class="workspace-topline">
+          <span>Live workspace</span>
+          <b>Human approval on</b>
         </div>
-      </section>
-
-      <section class="section" id="approach">
-        <div class="container section-intro" data-reveal>
-          <p class="eyebrow">Why Seraph</p>
-          <h2>Most agent products sell intelligence. Seraph sells continuity.</h2>
-          <p>
-            The product is designed to keep memory, attention, execution, and human steering in the same
-            loop so useful work can continue after the first answer.
-          </p>
+        <div class="workspace-heading">
+          <p>Current thread</p>
+          <strong>Keep the work legible while it moves.</strong>
         </div>
-
-        <div class="container thesis-grid">
-          <article class="thesis-card panel-surface" data-reveal>
-            <p class="card-kicker">Keep the thread</p>
-            <h3>Seraph is built for long-running work, not isolated prompts.</h3>
-            <p>
-              Plans, recent activity, queued decisions, and working context stay close enough to resume from
-              instead of forcing the user to reconstruct state each time.
-            </p>
-          </article>
-
-          <article class="thesis-card panel-surface" data-reveal>
-            <p class="card-kicker">Show the work</p>
-            <h3>Important execution stays readable while it is still happening.</h3>
-            <p>
-              The system does not bury approvals, degradation, or active work behind theatrical presentation.
-            </p>
-          </article>
-
-          <article class="thesis-card panel-surface" data-reveal>
-            <p class="card-kicker">Follow through</p>
-            <h3>Tools, workflows, and integrations stay attached to the same working surface.</h3>
-            <p>
-              Reasoning and action remain part of one product loop instead of separate disconnected modes.
-            </p>
-          </article>
+        <div class="workspace-grid">
+          <section class="workspace-panel memory-panel" aria-label="Memory state">
+            <span>Memory</span>
+            <b>Context restored</b>
+            <p>Plans, notes, recent activity, and decisions are available for the next step.</p>
+          </section>
+          <section class="workspace-panel queue-panel" aria-label="Intervention queue">
+            <span>Queue</span>
+            <ol>
+              <li><b>01</b> Review blocked workflow</li>
+              <li><b>02</b> Approve external tool call</li>
+              <li><b>03</b> Re-rank stale task</li>
+            </ol>
+          </section>
+          <section class="workspace-panel audit-panel" aria-label="Audit trace">
+            <span>Audit trace</span>
+            <div><time>09:41</time><b>memory loaded</b></div>
+            <div><time>09:43</time><b>approval requested</b></div>
+            <div><time>09:45</time><b>run paused safely</b></div>
+          </section>
         </div>
-      </section>
+      </aside>
+    </section>
 
-      <section class="section surface-section" id="surface">
-        <div class="container surface-layout">
-          <div class="surface-copy" data-reveal>
-            <p class="eyebrow">What stays visible</p>
-            <h2>A workspace where the important layers stay on-screen.</h2>
-            <p>
-              Sessions, memory, active work, approvals, workflow runs, and recent execution belong to the
-              same environment so the human can steer without losing situational awareness.
-            </p>
-          </div>
-
-          <div class="surface-board panel-surface" data-reveal>
-            <div class="board-row">
-              <span>Sessions and active work</span>
-              <p>Continue from where useful work last paused instead of starting over.</p>
-            </div>
-            <div class="board-row">
-              <span>Memory and evidence</span>
-              <p>Stored context supports the next decision instead of disappearing behind a thread boundary.</p>
-            </div>
-            <div class="board-row">
-              <span>Approvals and intervention</span>
-              <p>Human decisions stay explicit when execution crosses trust boundaries.</p>
-            </div>
-            <div class="board-row">
-              <span>Workflow runs and tool activity</span>
-              <p>The system stays inspectable while work is moving, not only after it finishes.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section capabilities-section">
-        <div class="container capabilities-heading" data-reveal>
-          <p class="eyebrow">Shipped foundations</p>
-          <p class="capabilities-bridge">
-            Longitudinal memory, real execution, and explicit human steering in one working system.
-          </p>
-        </div>
-
-        <div class="container capability-grid">
-          <article class="capability-card panel-surface" data-reveal>
-            <p class="card-kicker">Memory</p>
-            <h3>Persistent identity, long-term memory, and hierarchical goals.</h3>
-            <p>Context compounds instead of resetting at the edge of a conversation.</p>
-          </article>
-
-          <article class="capability-card panel-surface" data-reveal>
-            <p class="card-kicker">Timing</p>
-            <h3>Proactive scheduling for briefings, reviews, strategist ticks, and maintenance loops.</h3>
-            <p>Interventions can be ranked around timing, not only availability.</p>
-          </article>
-
-          <article class="capability-card panel-surface" data-reveal>
-            <p class="card-kicker">Execution</p>
-            <h3>Tools, workflows, and plug-and-play MCP servers in one working system.</h3>
-            <p>Real-world actions stay attached to the workspace where they were initiated.</p>
-          </article>
-
-          <article class="capability-card panel-surface" data-reveal>
-            <p class="card-kicker">Oversight</p>
-            <h3>Approvals, activity, and degraded-state visibility keep human control explicit.</h3>
-            <p>Legibility remains part of the product instead of a hidden debug layer.</p>
-          </article>
-        </div>
-
-        <div class="container build-strip" data-reveal>
-          <span>React 19</span>
-          <span>FastAPI</span>
-          <span>SQLite + LanceDB</span>
-          <span>APScheduler</span>
-          <span>MCP</span>
-          <span>Open source</span>
-        </div>
-      </section>
-
-      <section class="section" id="loop">
-        <div class="container section-intro section-intro--compact" data-reveal>
-          <p class="eyebrow">Guardian loop</p>
-          <h2>Observe. Model. Reason. Act. Learn.</h2>
-          <p>
-            The product only works when those loops reinforce each other instead of collapsing back into
-            one-off chat.
-          </p>
-        </div>
-
-        <div class="container loop-grid">
-          <article class="loop-card panel-surface" data-reveal>
-            <span>01</span>
-            <strong>Observe</strong>
-            <p>Read current work, schedules, screen context, and recent activity.</p>
-          </article>
-          <article class="loop-card panel-surface" data-reveal>
-            <span>02</span>
-            <strong>Model</strong>
-            <p>Maintain a living picture of the human, their priorities, and commitments.</p>
-          </article>
-          <article class="loop-card panel-surface" data-reveal>
-            <span>03</span>
-            <strong>Reason</strong>
-            <p>Rank leverage, risk, and timing instead of treating every task as equal.</p>
-          </article>
-          <article class="loop-card panel-surface" data-reveal>
-            <span>04</span>
-            <strong>Act</strong>
-            <p>Move through tools, workflows, and integrations with visible control.</p>
-          </article>
-          <article class="loop-card panel-surface" data-reveal>
-            <span>05</span>
-            <strong>Learn</strong>
-            <p>Use outcomes and feedback to improve the next intervention.</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="section cta-section">
-        <div class="container cta-shell panel-surface" data-reveal>
-          <div class="cta-copy-block">
-            <p class="eyebrow">Current direction</p>
-            <h2>A guardian workspace with memory, execution, and visible control.</h2>
-            <p>
-              Explore the docs, inspect the code, and follow the roadmap as Seraph deepens memory,
-              presence, and intervention quality.
-            </p>
-          </div>
-
-          <div class="cta-actions-block">
-            <div class="hero-actions cta-actions">
-              <a href="https://docs.seraph.quest" class="btn btn-primary">Open Documentation</a>
-              <a href="https://github.com/seraph-quest/seraph" class="btn btn-secondary">Inspect the Repo</a>
-            </div>
-
-            <p class="cta-meta">Docs, research, roadmap, and source stay one click away.</p>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer class="site-footer">
-      <div class="container footer-inner">
-        <div>
-          <p class="footer-title">Seraph</p>
-          <p class="footer-copy">Workspace-first guardian system for memory, execution, and intervention.</p>
-        </div>
-
-        <nav class="footer-links" aria-label="Footer">
-          <a href="https://docs.seraph.quest/">Docs</a>
-          <a href="https://docs.seraph.quest/research">Research</a>
-          <a href="https://docs.seraph.quest/">Roadmap</a>
-          <a href="https://github.com/seraph-quest/seraph">GitHub</a>
-        </nav>
+    <section class="quickstart" id="quickstart" aria-labelledby="quickstart-title">
+      <div>
+        <p class="section-label">Quick Start</p>
+        <h2 id="quickstart-title">Run the guardian locally.</h2>
+        <p>
+          Keep this section brutally practical. The page should make Seraph feel like software
+          you can inspect today, not a concept poster.
+        </p>
       </div>
-    </footer>
-  </div>
+      <div class="terminal" role="img" aria-label="Seraph quick start commands">
+        <div class="terminal-top">
+          <span></span><span></span><span></span>
+          <b>seraph.local</b>
+        </div>
+        <pre><code>$ git clone https://github.com/seraph-quest/seraph.git
+$ cd seraph
+$ ./manage.sh -e dev local start
+
+# Open the workspace
+$ open http://localhost:5173</code></pre>
+      </div>
+    </section>
+
+    <section class="does" id="does" aria-labelledby="does-title">
+      <p class="section-label">What it does</p>
+      <h2 id="does-title">Not a prettier chat. A working memory loop.</h2>
+      <div class="feature-grid">
+        <article>
+          <span>01</span>
+          <h3>Remembers the thread</h3>
+          <p>Plans, notes, recent activity, and decisions stay attached to the same workspace.</p>
+        </article>
+        <article>
+          <span>02</span>
+          <h3>Acts through tools</h3>
+          <p>Workflows and MCP servers stay part of the visible system instead of hidden side quests.</p>
+        </article>
+        <article>
+          <span>03</span>
+          <h3>Asks before risk</h3>
+          <p>Approvals, fallback paths, and degraded states stay legible while execution moves.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="proof" id="proof" aria-labelledby="proof-title">
+      <div class="proof-copy">
+        <p class="section-label">Why it feels different</p>
+        <h2 id="proof-title">The important state stays on-screen.</h2>
+        <p>
+          The product promise is continuity: memory, timing, execution, and human steering
+          remain close enough that useful work can continue after the first answer.
+        </p>
+      </div>
+      <div class="proof-wall">
+        <blockquote>
+          <p>Long-term memory should be visible, editable, and connected to action.</p>
+          <cite>Memory</cite>
+        </blockquote>
+        <blockquote>
+          <p>Interventions should be ranked by usefulness, not just model availability.</p>
+          <cite>Timing</cite>
+        </blockquote>
+        <blockquote>
+          <p>Execution should leave receipts before anyone has to debug the mystery.</p>
+          <cite>Audit</cite>
+        </blockquote>
+      </div>
+    </section>
+
+    <section class="ecosystem" aria-labelledby="ecosystem-title">
+      <p class="section-label">Open surface</p>
+      <h2 id="ecosystem-title">Built for people who read source code for fun.</h2>
+      <div class="pill-row" aria-label="Seraph foundations">
+        <span>React</span>
+        <span>FastAPI</span>
+        <span>SQLite</span>
+        <span>LanceDB</span>
+        <span>MCP</span>
+        <span>Open Source</span>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>Seraph</span>
+    <a href="https://docs.seraph.quest">Documentation</a>
+    <a href="https://github.com/seraph-quest/seraph">GitHub</a>
+  </footer>
 </body>
 </html>
