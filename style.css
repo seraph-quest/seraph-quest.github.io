@@ -226,6 +226,14 @@ h1 {
   color: var(--fg);
 }
 
+.button-github {
+  gap: 0.55rem;
+}
+
+.button-github svg {
+  flex: 0 0 auto;
+}
+
 .workspace-card {
   position: relative;
   min-height: 36rem;
